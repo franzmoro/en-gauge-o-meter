@@ -7,8 +7,8 @@ module.exports = {
     'webpack/hot/dev-server',
     './src/index.js'
   ],
-  output: {
-    path: join(__dirname, '/public'),
+  output    : {
+    path: __dirname,
     filename: 'bundle.js',
   },
   resolve: {
