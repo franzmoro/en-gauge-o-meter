@@ -2,10 +2,10 @@ const { join } = require('path');
 
 module.exports = {
   entry: [
-    './src/index.js'
+    join(__dirname, '/src/')
   ],
   output: {
-    path: join(__dirname, '/public'),
+    path: __dirname,
     filename: 'bundle.js',
   },
   resolve: {
