@@ -82,3 +82,19 @@ This is easily done via **GH pages** (see the guide [here](https://help.github.c
 ## Dev Setup
 
 ## Dev Guidelines
+#### Styling
+**Shall be included in the component** and not in a centralized css stylesheet. This is especially important to avoid potential clashes with other widget/components class-names part of the "larger app".
+
+#### Commit style
+Leave 1 line of whitespace between the following lines:
+
+- **Emoji + Brief description**:
+Description shall fit in 1 line.
+Emoji to describe immediately the type of commit (see emoji guide [here](emoji_guide.md)).
+
+- **Body in greater detail**:
+Explain the problem being solved by this commit (how and why, if applicable).
+- **Reference to Github Issue / Pull Request**, e.g.:
+```
+relates to #12, #19
+```
