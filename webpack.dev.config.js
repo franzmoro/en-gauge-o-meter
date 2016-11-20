@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const { join } = require('path');
 
 module.exports = {
   entry: [
@@ -7,7 +8,7 @@ module.exports = {
     './src/index.js'
   ],
   output: {
-    path: __dirname,
+    path: join(__dirname, '/public'),
     filename: 'bundle.js',
   },
   resolve: {
