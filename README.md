@@ -86,7 +86,9 @@ In development mode, webpack has [hot-reloading](https://webpack.github.io/docs/
 This is easily done via **GH pages** (see the guide [here](https://help.github.com/articles/user-organization-and-project-pages/)), as there is no back-end server and the React-app is bundled to ES5.
 
 ## Dev Setup
-*Section to be filled in*.
+- clone the repo ```git clone ```
+- Install the dev-dependencies ```npm install```
+- Start webpack-dev-server: ```npm run dev:start```
 
 ## Dev Guidelines
 #### Styling

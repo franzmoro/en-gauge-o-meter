@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 
-class LiveMeterContainer extends Component {
-  render () {
-    return (
-      <h1>THE EN-GAUGE-O-METER</h1>
-    );
-  }
-};
+import SmartGaugeComponent from './component.js';
+
+const LiveMeterContainer = (props) => <SmartGaugeComponent />;
 
 module.exports = LiveMeterContainer;
