@@ -1,3 +1,3 @@
 module.exports = {
-  LiveMeterContainer: require('./container.js')
+  SmartGaugeContainer: require('./container.js'),
 };
