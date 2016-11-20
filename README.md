@@ -32,6 +32,12 @@ The app shall show:
   - API responding with an error (e.g. 404 / 500 status-code).
 
 ## Stretch Goals
+If they can fit within the 4h development sprint, the following features / implementations will be placed in the project scope:
+- **Online Continuos Integration** with Travis.CI
+- **Update button** (gets fresh data from API, updates needle and labels)
+- **Color Picker** (changes gauge colors)
+- **Size Changing** (select canvas size)
+- **Type-checking** with flow
 
 ## Technical Choices
 #### Front-end framework
@@ -80,6 +86,7 @@ In development mode, webpack has [hot-reloading](https://webpack.github.io/docs/
 This is easily done via **GH pages** (see the guide [here](https://help.github.com/articles/user-organization-and-project-pages/)), as there is no back-end server and the React-app is bundled to ES5.
 
 ## Dev Setup
+*Section to be filled in*.
 
 ## Dev Guidelines
 #### Styling
