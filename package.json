@@ -4,7 +4,8 @@
   "description": "Gauge-type Indicator built with React / Redux / Canvas",
   "main": "index.js",
   "scripts": {
-    "dev:start": "webpack-dev-server --config webpack.dev.config.js"
+    "dev:start": "webpack-dev-server --config webpack.dev.config.js",
+    "start": "webpack --config webpack.prod.config.js"
   },
   "keywords": [],
   "author": "franzmoro",
