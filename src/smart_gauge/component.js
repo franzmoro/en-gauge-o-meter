@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 import React, { Component } from 'react';
 
 class LiveMeterComponent extends Component {
@@ -11,7 +11,7 @@ class LiveMeterComponent extends Component {
       xRef: ref,
       yRef: ref + radius / 2,
       ratio: 0.5
-    }
+    };
     this.setupCanvas = this.setupCanvas.bind(this);
     this.renderGauge = this.renderGauge.bind(this);
     this.renderNeedle = this.renderNeedle.bind(this);
@@ -27,7 +27,7 @@ class LiveMeterComponent extends Component {
     return Object.assign(ctx, canvasConfigObj, {});
   }
   renderNeedleBase () {
-    const { xRef, yRef, radius, ratio } = this.state;
+    const { xRef, yRef } = this.state;
     const ctx = this.setupCanvas({
       lineWidth: 5,
       strokeStyle: 'blue',
@@ -81,7 +81,7 @@ class LiveMeterComponent extends Component {
       </div>
     );
   }
-};
+}
 
 const styles = {
   title: {
@@ -91,6 +91,6 @@ const styles = {
     backgroundColor: 'grey',
     textAlign: 'center'
   }
-}
+};
 
 module.exports = LiveMeterComponent;

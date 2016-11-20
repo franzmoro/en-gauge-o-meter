@@ -1,6 +1,6 @@
-'use strict'
-
-import React, { Component, PropTypes } from 'react';
+/* global document */
+'use strict';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { SmartGaugeContainer } from './smart_gauge/';
 

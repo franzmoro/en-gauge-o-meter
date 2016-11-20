@@ -1,8 +1,8 @@
-'use strict'
-import React, { Component } from 'react';
+'use strict';
+import React from 'react';
 
 import SmartGaugeComponent from './component.js';
 
-const LiveMeterContainer = (props) => <SmartGaugeComponent />;
+const LiveMeterContainer = () => <SmartGaugeComponent />;
 
 module.exports = LiveMeterContainer;
