@@ -1,3 +1,4 @@
+'use strict'
 import React, { Component } from 'react';
 
 class LiveMeterComponent extends Component {

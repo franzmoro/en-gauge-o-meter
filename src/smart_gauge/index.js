@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = {
   SmartGaugeContainer: require('./container.js'),
   SmartGaugeComponent: require('./component.js'),
