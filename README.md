@@ -43,6 +43,10 @@ The following documentation will shed light on how to draw shapes in Canvas:
 - **[Arcs](https://developer.mozilla.org/it/docs/Web/API/CanvasRenderingContext2D/arc)**
 - **[Lines](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes#Lines)**
 
+#### Component Properties
+- **PropTypes** should be enforced.
+- **Default props** should also be in place for potentially undefined / missing values from API
+
 #### Routing
 **Not necessary**.
 
@@ -52,6 +56,18 @@ The following documentation will shed light on how to draw shapes in Canvas:
 #### Data generation
 Data is generated via [this API](https://widgister.herokuapp.com/challenge/frontend), and has a similar format to the one described in the data handling section. As discussed, the API is not necessarily reliable, and potential errors need to be accounted for.
 
+#### App state management
+**[Redux](
+redux.js.org/)** has been chosen to allow:
+- simple separation of view layer from logic, leading to:
+  - improved readability
+  - simplified unit-testing for the app's logic
+
+**[Immutable.js](https://facebook.github.io/immutable-js/)** and **[pure functions](https://en.wikipedia.org/wiki/Pure_function)** ensure there will be no state mutations.
+
+#### Testing
+Testing is performed at unit level for redux actions and reducers with **[Tape](https://github.com/substack/tape)**
+
 #### Building
 The front-end javascript is
 - Transpiled from ES2015 and JSX (html-like syntax for React) to ES5 with [babel](https://babeljs.io/docs/plugins/)
@@ -60,6 +76,8 @@ The front-end javascript is
 
 In development mode, webpack has [hot-reloading](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html).
 
+#### Online deployment
+This is easily done via **GH pages** (see the guide [here](https://help.github.com/articles/user-organization-and-project-pages/)), as there is no back-end server and the React-app is bundled to ES5.
 
 ## Dev Setup
 
