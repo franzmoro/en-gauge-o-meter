@@ -11,7 +11,6 @@ class LiveMeterComponent extends Component {
       yRef: ref + radius / 2,
       ratio: 0.5
     }
-    this.getCanvasContext = this.getCanvasContext.bind(this);
     this.setupCanvas = this.setupCanvas.bind(this);
     this.renderGauge = this.renderGauge.bind(this);
     this.renderNeedle = this.renderNeedle.bind(this);
@@ -21,50 +20,48 @@ class LiveMeterComponent extends Component {
     this.renderNeedleBase();
     this.renderNeedle();
   }
-  getCanvasContext () {
-    return this.refs.gauge.getContext('2d');
-  }
   setupCanvas (canvasConfigObj) {
-    const ctx = this.getCanvasContext();
+    const ctx = this.refs.gauge.getContext('2d');
     return Object.assign(ctx, canvasConfigObj, {});
   }
   renderNeedleBase () {
-    const ctx = this.getCanvasContext();
     const { xRef, yRef, radius, ratio } = this.state;
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = 'blue';
-    ctx.fillStyle = 'blue';
+    const ctx = this.setupCanvas({
+      lineWidth: 5,
+      strokeStyle: 'blue',
+      fillStyle: 'blue'
+    });
     ctx.beginPath();
     ctx.arc(xRef, yRef, 5, 0, Math.PI * 2, true);
     ctx.stroke();
     ctx.fill();
   }
   renderNeedle () {
-    const ctx = this.getCanvasContext();
     const { xRef, yRef, radius, ratio } = this.state;
-
-    const needleAngle = (Math.PI) * (1 - ratio);
-    ctx.lineCap = 'round';
-    // needle pointer
+    const ctx = this.setupCanvas({
+      lineCap: 'round',
+      lineWidth: 5,
+      strokeStyle: 'blue'
+    });
     ctx.beginPath();
     ctx.moveTo(xRef, yRef);
+    const needleAngle = (Math.PI) * (1 - ratio);
     const newX = xRef + radius * Math.cos(needleAngle);
     const newY = yRef - radius * Math.sin(needleAngle);
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = 'blue';
     ctx.lineTo(newX, newY);
     ctx.stroke();
   }
   renderGauge () {
-    const ctx = this.getCanvasContext();
     const { xRef, yRef, radius } = this.state;
+    const ctx = this.setupCanvas({
+      lineWidth: 3,
+      strokeStyle: '#550000',
+      font: '20px Verdana'
+    });
     ctx.beginPath();
     ctx.arc(xRef, yRef, radius, 0, Math.PI, true);
-    ctx.lineWidth = 3;
     ctx.closePath();
-    ctx.strokeStyle = '#550000';
     ctx.stroke();
-    ctx.font = '20px Verdana';
     ctx.fillText('£ 0', xRef - (radius + 20), yRef + 30);
     ctx.fillText('£ 100', xRef + (radius - 20), yRef + 30);
     ctx.fillText('£ 50', xRef - 10, yRef - radius - 20);
@@ -74,8 +71,7 @@ class LiveMeterComponent extends Component {
       <div style = { styles.container }>
         <h1 style = { styles.title }>THE EN-GAUGE-O-METER</h1>
         <div>
-          <canvas
-            ref = 'gauge'
+          <canvas ref = 'gauge'
             width = { 500 }
             height = { 500 }
             />
