@@ -14,6 +14,7 @@ class LiveMeterComponent extends Component {
     this.setupCanvas = this.setupCanvas.bind(this);
     this.renderGauge = this.renderGauge.bind(this);
     this.renderNeedle = this.renderNeedle.bind(this);
+    this.renderNeedleBase = this.renderNeedleBase.bind(this);
   }
   componentDidMount () {
     this.renderGauge();
