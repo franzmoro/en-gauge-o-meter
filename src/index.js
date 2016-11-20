@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { LiveMeterContainer } from './smart_gauge/';
+import { SmartGaugeContainer } from './smart_gauge/';
 
-class LiveOMeter extends Component {
+class EnGaugeOMeter extends Component {
   render () {
     return (
-      <LiveMeterContainer />
+      <SmartGaugeContainer />
     );
   }
 }
 const node = document.getElementById('enGaugeOMeter');
 
-ReactDOM.render(<LiveOMeter/>, node);
+ReactDOM.render(<EnGaugeOMeter/>, node);
