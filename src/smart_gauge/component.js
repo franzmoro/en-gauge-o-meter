@@ -64,8 +64,8 @@ SmartGaugeComponent.defaultProps = {
   radius: 250,
   xRef: 250,
   yRef: 375,
-  needleStrokeStyle: 'blue',
-  gaugeStrokeStyle: '#550000',
+  needleStrokeStyle: '#68D7F1',
+  gaugeStrokeStyle: '#649500',
   labelFont: '20px Impact'
 };
 

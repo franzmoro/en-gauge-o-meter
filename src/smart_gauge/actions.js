@@ -129,7 +129,8 @@ const renderLabels = canvas => (dispatch, getState) => {
   } = getState().toJS();
 
   const ctx = setupCanvas(canvas, {
-    font: labelFont
+    font: labelFont,
+    fillStyle: '#68D7F1'
   });
   const labelsOffset = 20;
   ctx.fillText(minLabel,  (xRef - radius), (yRef + labelsOffset));
