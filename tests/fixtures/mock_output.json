@@ -1,0 +1,16 @@
+{
+  "good1": {
+    "minLabel": "USD 118",
+    "maxLabel": "USD 514",
+    "valueLabel": "USD 378",
+    "ratio": 0.6565656565656566,
+    "isShowingErrorMessage": false
+  },
+  "good2": {
+    "maxLabel": "514",
+    "minLabel": "118",
+    "valueLabel": "378",
+    "ratio": 0.6565656565656566,
+    "isShowingErrorMessage": false
+  }
+}

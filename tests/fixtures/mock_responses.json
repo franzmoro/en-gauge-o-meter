@@ -29,6 +29,6 @@
     "statusText": "OK"
   },
   "error": {
-    "status": 500,
+    "status": 500
   }
 }
