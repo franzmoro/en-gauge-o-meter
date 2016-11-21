@@ -6,14 +6,14 @@ import SmartGaugeComponent from './component.js';
 import * as SmartGaugeActions from './actions.js';
 
 const SmartGaugeContainer = props =>
-  <SmartGaugeComponent { ...{ props } } />;
+  <SmartGaugeComponent { ...props } />;
 
 const mapStateToProps = state => {
   const { dimensions, style, data } = state.toJS();
 
   return {
-    dimensions,
-    style,
+    ...style,
+    ...dimensions,
     ...data
   };
 };

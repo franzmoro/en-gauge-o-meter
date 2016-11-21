@@ -1,12 +1,18 @@
 'use strict';
 import Immutable from 'immutable';
+import {
+  SET_DATA,
+  SET_GAUGE_DIMENSIONS,
+  SET_STYLE
+} from '../action_types.js';
 
 const initialState = Immutable.fromJS({
   data: {
     minLabel: undefined,
     maxLabel: undefined,
     valueLabel: undefined,
-    ratio: undefined
+    ratio: undefined,
+    isShowingErrorMessage: false
   },
   // stretch goal to set dimensions from user input
   dimensions: {
@@ -24,6 +30,13 @@ const initialState = Immutable.fromJS({
 
 module.exports = (state = initialState, action) => {
   switch (action.type) {
-    default: return state;
+    case SET_DATA:
+      return state.set('data', Immutable.fromJS(action.data));
+    case SET_GAUGE_DIMENSIONS:
+      return state.set('dimensions', Immutable.fromJS(action.dimensions));
+    case SET_STYLE:
+      return state.set('style', Immutable.fromJS(action.style));
+    default:
+      return state;
   }
 };
