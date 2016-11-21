@@ -34,6 +34,7 @@ The app shall show:
 ## Stretch Goals
 If they can fit within the 4h development sprint, the following features / implementations will be placed in the project scope:
 - **Online Continuos Integration** with Travis.CI
+- **Animated pendulum needle**
 - **Update button** (gets fresh data from API, updates needle and labels)
 - **Color Picker** (changes gauge colors)
 - **Size Changing** (select canvas size)
