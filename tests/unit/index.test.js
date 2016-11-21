@@ -1,7 +1,6 @@
 require('babel-core/register')({ presets: ['es2015', 'react', 'stage-0'] });
 
 const test = require('tape');
-const nock = require('nock');
 const syncFlow = require('sync-flow');
 const reducers = require('../../src/smart_gauge/reducers.js');
 const configureStore = require('../../src/configure_store.js');
