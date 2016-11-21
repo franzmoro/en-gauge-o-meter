@@ -1,25 +1,17 @@
 'use strict';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class LiveMeterComponent extends Component {
+class SmartGaugeComponent extends Component {
   constructor () {
     super();
-    const radius = 200;
-    const ref = 250;
-    this.state = {
-      radius,
-      xRef: ref,
-      yRef: ref + radius / 2,
-      ratio: 0.5
-    };
     this.setupCanvas = this.setupCanvas.bind(this);
     this.renderGauge = this.renderGauge.bind(this);
-    this.renderNeedle = this.renderNeedle.bind(this);
+    this.renderLabels = this.renderLabels.bind(this);
     this.renderNeedleBase = this.renderNeedleBase.bind(this);
+    this.renderNeedle = this.renderNeedle.bind(this);
   }
   componentDidMount () {
     this.renderGauge();
-    this.renderNeedleBase();
     this.renderNeedle();
   }
   setupCanvas (canvasConfigObj) {
@@ -27,11 +19,14 @@ class LiveMeterComponent extends Component {
     return Object.assign(ctx, canvasConfigObj, {});
   }
   renderNeedleBase () {
-    const { xRef, yRef } = this.state;
+    const {
+      dimensions: { xRef, yRef },
+      style: { needleStrokeStyle }
+    } = this.props;
     const ctx = this.setupCanvas({
       lineWidth: 5,
-      strokeStyle: 'blue',
-      fillStyle: 'blue'
+      strokeStyle: needleStrokeStyle,
+      fillStyle: needleStrokeStyle
     });
     ctx.beginPath();
     ctx.arc(xRef, yRef, 5, 0, Math.PI * 2, true);
@@ -39,11 +34,15 @@ class LiveMeterComponent extends Component {
     ctx.fill();
   }
   renderNeedle () {
-    const { xRef, yRef, radius, ratio } = this.state;
+    const {
+      dimensions: { xRef, yRef, radius },
+      ratio,
+      style: { needleStrokeStyle }
+    } = this.props;
     const ctx = this.setupCanvas({
       lineCap: 'round',
       lineWidth: 5,
-      strokeStyle: 'blue'
+      strokeStyle: needleStrokeStyle
     });
     ctx.beginPath();
     ctx.moveTo(xRef, yRef);
@@ -52,21 +51,36 @@ class LiveMeterComponent extends Component {
     const newY = yRef - radius * Math.sin(needleAngle);
     ctx.lineTo(newX, newY);
     ctx.stroke();
+    this.renderNeedleBase();
   }
   renderGauge () {
-    const { xRef, yRef, radius } = this.state;
+    const {
+      dimensions: { xRef, yRef, radius },
+      style: { gaugeStrokeStyle }
+    } = this.props;
     const ctx = this.setupCanvas({
       lineWidth: 3,
-      strokeStyle: '#550000',
-      font: '20px Verdana'
+      strokeStyle: gaugeStrokeStyle
     });
     ctx.beginPath();
     ctx.arc(xRef, yRef, radius, 0, Math.PI, true);
     ctx.closePath();
     ctx.stroke();
-    ctx.fillText('£ 0', xRef - (radius + 20), yRef + 30);
-    ctx.fillText('£ 100', xRef + (radius - 20), yRef + 30);
-    ctx.fillText('£ 50', xRef - 10, yRef - radius - 20);
+    this.renderLabels();
+  }
+  renderLabels () {
+    const {
+      dimensions: { xRef, yRef, radius },
+      minLabel, maxLabel, valueLabel,
+      style: { labelFont }
+    } = this.props;
+    const ctx = this.setupCanvas({
+      font: labelFont
+    });
+    const labelsOffset = 20;
+    ctx.fillText(minLabel,  (xRef - radius), (yRef + labelsOffset));
+    ctx.fillText(maxLabel,  (xRef + radius), (yRef + labelsOffset));
+    ctx.fillText(valueLabel, xRef,           (yRef - radius - labelsOffset));
   }
   render () {
     return (
@@ -74,8 +88,8 @@ class LiveMeterComponent extends Component {
         <h1 style = { styles.title }>THE EN-GAUGE-O-METER</h1>
         <div>
           <canvas ref = 'gauge'
-            width = { 500 }
-            height = { 500 }
+            width = { 600 }
+            height = { 600 }
             />
         </div>
       </div>
@@ -93,4 +107,30 @@ const styles = {
   }
 };
 
-module.exports = LiveMeterComponent;
+SmartGaugeComponent.propTypes = {
+  minLabel: PropTypes.string,
+  maxLabel: PropTypes.string,
+  valueLabel: PropTypes.string,
+  ratio: PropTypes.number,
+  dimensions: PropTypes.object,
+  style: PropTypes.object
+};
+
+SmartGaugeComponent.defaultProps = {
+  minLabel: '£ 0',
+  maxLabel: '£ 100',
+  valueLabel: '£ 50',
+  ratio: 0.5,
+  dimensions: {
+    radius: 250,
+    xRef: 250,
+    yRef: 375
+  },
+  style: {
+    needleStrokeStyle: 'blue',
+    gaugeStrokeStyle: '#550000',
+    labelFont: '20px Verdana'
+  }
+};
+
+module.exports = SmartGaugeComponent;
