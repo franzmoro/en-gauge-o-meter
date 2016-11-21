@@ -6,12 +6,12 @@ import {
   SET_STYLE
 } from '../action_types.js';
 
-const isResponseOk = response => {
+export const isResponseOk = response => {
   const { error, status, statusText, data: { min, max, value } } = response;
   return (
     !error && (status === 200) && (statusText === 'OK') &&
     (min && max && value) &&
-    (value >= min) && (value <= max) && (min !== max)
+    (min <= value) && (value <= max) && (min < max)
   );
 };
 
