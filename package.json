@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev:start": "webpack-dev-server --config webpack.dev.config.js",
-    "start": "webpack --config webpack.prod.config.js"
+    "start": "webpack --config webpack.prod.config.js",
+    "test": "node tests/unit/index.test.js"
   },
   "keywords": [],
   "author": "franzmoro",
@@ -29,6 +30,8 @@
     "redux-immutable": "^3.0.8",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0",
+    "sync-flow": "^1.0.0",
+    "tape": "^4.6.2",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }
