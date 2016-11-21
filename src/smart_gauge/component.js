@@ -31,10 +31,9 @@ class SmartGaugeComponent extends Component {
 const styles = {
   title: {
     margin: 10,
-    font: '40px Verdana'
+    font: '40px Impact'
   },
   container: {
-    backgroundColor: 'grey',
     textAlign: 'center'
   }
 };
@@ -65,9 +64,9 @@ SmartGaugeComponent.defaultProps = {
   radius: 250,
   xRef: 250,
   yRef: 375,
-  needleStrokeStyle: 'blue',
-  gaugeStrokeStyle: '#550000',
-  labelFont: '20px Verdana'
+  needleStrokeStyle: '#68D7F1',
+  gaugeStrokeStyle: '#649500',
+  labelFont: '20px Impact'
 };
 
 module.exports = SmartGaugeComponent;
