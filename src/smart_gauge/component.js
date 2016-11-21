@@ -34,7 +34,6 @@ const styles = {
     font: '40px Impact'
   },
   container: {
-    backgroundColor: 'grey',
     textAlign: 'center'
   }
 };
