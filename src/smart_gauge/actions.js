@@ -64,23 +64,6 @@ export const setNewData = data => {
   };
 };
 
-export const displayErrorMessage = canvas => (dispatch, getState) => {
-  const {
-    dimensions: { xRef, yRef, radius },
-    style: { labelFont }
-  } = getState().toJS();
-
-  const ctx = setupCanvas(canvas, {
-    font: labelFont,
-    fillStyle: 'red'
-  });
-  ctx.fillText(
-    'API Error!',
-    xRef - 40,
-    yRef - radius - 50
-  );
-};
-
 export const setGaugeDimensions = dimensions => ({
   type: SET_GAUGE_DIMENSIONS,
   dimensions
@@ -102,6 +85,24 @@ const setupCanvas  = (canvas, canvasConfigObj) =>
 const renderGauge = canvas => dispatch => {
   dispatch(renderOnlyGauge(canvas));
   dispatch(renderLabels(canvas));
+};
+
+export const displayErrorMessage = canvas => (dispatch, getState) => {
+  const {
+    dimensions: { xRef, yRef, radius },
+    style: { labelFont }
+  } = getState().toJS();
+
+  const ctx = setupCanvas(canvas, {
+    font: labelFont,
+    fillStyle: 'red'
+  });
+
+  ctx.fillText(
+    'API Error!',
+    xRef,
+    yRef - radius - 20
+  );
 };
 
 const renderOnlyGauge = canvas => (dispatch, getState) => {
